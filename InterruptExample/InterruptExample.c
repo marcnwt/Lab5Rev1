@@ -40,38 +40,20 @@ volatile unsigned int ADC_result_flag;
 volatile char STATE;
 
 void adcSetup(void);
-void inputSetup(void);
+void inputOutputSetup(void);
+void interruptsSetup(void);
+
+
 void mTimer(int count);
+
 
 int main(){
 
 adcSetup();
-inputSetup();
+inputOutputSetup();
 
 	STATE = 0;
 
-	cli();	// Disables all interrupts
-
-	// Going to set up interrupt0 on PD0
-	DDRD = 0b11110110;
-	DDRC = 0xFF;	// just use as a display
-
-
-	// Set up the Interrupt 0,3 options
-	//External Inturrupt Control Register A - EICRA (pg 94 and under the EXT_INT tab to the right
-	// Set Interrupt sense control to catch a rising edge
-	EICRA |=  _BV(ISC01);
-	EICRA &= ~_BV(ISC00);
-
-//	EICRA &= ~_BV(ISC01) & ~_BV(ISC00); /* These lines would undo the above two lines */
-//	EICRA &= ~_BV(ISC31) & ~_BV(ISC30); /* Nice little trick */
-
-
-	// See page 96 - EIFR External Interrupt Flags...notice how they reset on their own in 'C'...not in assembly
-	EIMSK |= 0x09;
-
-	// Enable all interrupts
-	sei();	// Note this sets the Global Enable for all interrupts
 
 	goto POLLING_STAGE;
 
@@ -110,7 +92,7 @@ inputSetup();
 		if (ADC_result_flag)
         {
             //PORTC = ADC_result_H;
-            //int adcResult = (ADC_result_H << 2) | (ADC_result_L >> 6);
+            int adcResult = (ADC_result_H << 2) | (ADC_result_L >> 6);
             //adcResult = (adcResult*255)/1024;
             //int adcResult = (ADC_result_H*255)/1024;
             ADC_result_flag = 0x00;
@@ -191,12 +173,47 @@ ISR(ADC_vect)
 
 }
 
-void inputSetup(void)
+void inputOutputSetup(void)
 {
     //Input for light
-    DDRD = 0x00;	//Input
-	DDRC = 0xFF;	//LED output
+    //DDRD = 0x00;	//Input
+	//DDRC = 0xFF;	//LED output
+
+	// Going to set up interrupt0 on PD0
+	DDRD = 0b11110110;
+	DDRC = 0xFF;	// just use as a display
+
+
+
+
 }
+
+void interruptsSetup(void){
+
+	
+	cli();	// Disables all interrupts
+	
+		// Set up the Interrupt 0,3 options
+		//External Inturrupt Control Register A - EICRA (pg 94 and under the EXT_INT tab to the right
+		// Set Interrupt sense control to catch a rising edge
+		EICRA |=  _BV(ISC01);
+		EICRA &= ~_BV(ISC00);
+	
+	//	EICRA &= ~_BV(ISC01) & ~_BV(ISC00); /* These lines would undo the above two lines */
+	//	EICRA &= ~_BV(ISC31) & ~_BV(ISC30); /* Nice little trick */
+	
+	
+		// See page 96 - EIFR External Interrupt Flags...notice how they reset on their own in 'C'...not in assembly
+		EIMSK |= 0x09;
+	
+		// Enable all interrupts
+		sei();	// Note this sets the Global Enable for all interrupts
+
+
+}
+
+
+
 
 void mTimer(int count)
 {
