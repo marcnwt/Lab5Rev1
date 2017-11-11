@@ -1,0 +1,471 @@
+
+InterruptExample.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000268  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000005  00800100  00800100  000002dc  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  000002dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 000000c5  00000000  00000000  000002fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   000001d0  00000000  00000000  000003c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000000f5  00000000  00000000  00000591  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000235  00000000  00000000  00000686  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000090  00000000  00000000  000008bc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000148  00000000  00000000  0000094c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000028  00000000  00000000  00000a94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 4c 00 	jmp	0x98	; 0x98 <__ctors_end>
+   4:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+   8:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+   c:	0c 94 6d 00 	jmp	0xda	; 0xda <__vector_3>
+  10:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__vector_4>
+  14:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  18:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  1c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  20:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  24:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  28:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  2c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  30:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  34:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  38:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  3c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  40:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  44:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  48:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  4c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  50:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  54:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  58:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  5c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  60:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  64:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  68:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  6c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  70:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  74:	0c 94 f1 00 	jmp	0x1e2	; 0x1e2 <__vector_29>
+  78:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  7c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  80:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  84:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  88:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  8c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  90:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  94:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+
+00000098 <__ctors_end>:
+  98:	11 24       	eor	r1, r1
+  9a:	1f be       	out	0x3f, r1	; 63
+  9c:	cf ef       	ldi	r28, 0xFF	; 255
+  9e:	d0 e2       	ldi	r29, 0x20	; 32
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	cd bf       	out	0x3d, r28	; 61
+
+000000a4 <__do_copy_data>:
+  a4:	11 e0       	ldi	r17, 0x01	; 1
+  a6:	a0 e0       	ldi	r26, 0x00	; 0
+  a8:	b1 e0       	ldi	r27, 0x01	; 1
+  aa:	e8 e6       	ldi	r30, 0x68	; 104
+  ac:	f2 e0       	ldi	r31, 0x02	; 2
+  ae:	00 e0       	ldi	r16, 0x00	; 0
+  b0:	0b bf       	out	0x3b, r16	; 59
+  b2:	02 c0       	rjmp	.+4      	; 0xb8 <__do_copy_data+0x14>
+  b4:	07 90       	elpm	r0, Z+
+  b6:	0d 92       	st	X+, r0
+  b8:	a0 30       	cpi	r26, 0x00	; 0
+  ba:	b1 07       	cpc	r27, r17
+  bc:	d9 f7       	brne	.-10     	; 0xb4 <__do_copy_data+0x10>
+
+000000be <__do_clear_bss>:
+  be:	11 e0       	ldi	r17, 0x01	; 1
+  c0:	a0 e0       	ldi	r26, 0x00	; 0
+  c2:	b1 e0       	ldi	r27, 0x01	; 1
+  c4:	01 c0       	rjmp	.+2      	; 0xc8 <.do_clear_bss_start>
+
+000000c6 <.do_clear_bss_loop>:
+  c6:	1d 92       	st	X+, r1
+
+000000c8 <.do_clear_bss_start>:
+  c8:	a5 30       	cpi	r26, 0x05	; 5
+  ca:	b1 07       	cpc	r27, r17
+  cc:	e1 f7       	brne	.-8      	; 0xc6 <.do_clear_bss_loop>
+  ce:	0e 94 ad 00 	call	0x15a	; 0x15a <main>
+  d2:	0c 94 32 01 	jmp	0x264	; 0x264 <_exit>
+
+000000d6 <__bad_interrupt>:
+  d6:	0c 94 8b 00 	jmp	0x116	; 0x116 <__vector_default>
+
+000000da <__vector_3>:
+}
+
+
+/* Set up the External Interrupt 0 Vector */
+
+ISR(INT2_vect){
+  da:	1f 92       	push	r1
+  dc:	0f 92       	push	r0
+  de:	0f b6       	in	r0, 0x3f	; 63
+  e0:	0f 92       	push	r0
+  e2:	11 24       	eor	r1, r1
+  e4:	8f 93       	push	r24
+	/* Toggle PORTA bit 0 */
+	STATE = 2;
+  e6:	82 e0       	ldi	r24, 0x02	; 2
+  e8:	80 93 03 01 	sts	0x0103, r24
+}
+  ec:	8f 91       	pop	r24
+  ee:	0f 90       	pop	r0
+  f0:	0f be       	out	0x3f, r0	; 63
+  f2:	0f 90       	pop	r0
+  f4:	1f 90       	pop	r1
+  f6:	18 95       	reti
+
+000000f8 <__vector_4>:
+
+ISR(INT3_vect){
+  f8:	1f 92       	push	r1
+  fa:	0f 92       	push	r0
+  fc:	0f b6       	in	r0, 0x3f	; 63
+  fe:	0f 92       	push	r0
+ 100:	11 24       	eor	r1, r1
+ 102:	8f 93       	push	r24
+	/* Toggle PORTA bit 3 */
+STATE = 4;
+ 104:	84 e0       	ldi	r24, 0x04	; 4
+ 106:	80 93 03 01 	sts	0x0103, r24
+}
+ 10a:	8f 91       	pop	r24
+ 10c:	0f 90       	pop	r0
+ 10e:	0f be       	out	0x3f, r0	; 63
+ 110:	0f 90       	pop	r0
+ 112:	1f 90       	pop	r1
+ 114:	18 95       	reti
+
+00000116 <__vector_default>:
+// to the reset vector. You can override this by supplying a function named BADISR_vect which 
+// should be defined with ISR() as such. (The name BADISR_vect is actually an alias for __vector_default.
+// The latter must be used inside assembly code in case <avr/interrupt.h> is not included.
+
+ISR(BADISR_vect)
+{
+ 116:	1f 92       	push	r1
+ 118:	0f 92       	push	r0
+ 11a:	0f b6       	in	r0, 0x3f	; 63
+ 11c:	0f 92       	push	r0
+ 11e:	11 24       	eor	r1, r1
+    // user code here
+}
+ 120:	0f 90       	pop	r0
+ 122:	0f be       	out	0x3f, r0	; 63
+ 124:	0f 90       	pop	r0
+ 126:	1f 90       	pop	r1
+ 128:	18 95       	reti
+
+0000012a <adcSetup>:
+
+
+void adcSetup(void)
+{
+
+    cli(); // disable all of the interrupt ==========================
+ 12a:	f8 94       	cli
+
+    // config ADC =========================================================
+    // by default, the ADC input (analog input is set to be ADC0 / PORTF0
+    ADCSRA |= _BV(ADEN);              // enable ADC
+ 12c:	ea e7       	ldi	r30, 0x7A	; 122
+ 12e:	f0 e0       	ldi	r31, 0x00	; 0
+ 130:	80 81       	ld	r24, Z
+ 132:	80 68       	ori	r24, 0x80	; 128
+ 134:	80 83       	st	Z, r24
+    ADCSRA |= _BV(ADIE);              // enable interrupt of ADC
+ 136:	80 81       	ld	r24, Z
+ 138:	88 60       	ori	r24, 0x08	; 8
+ 13a:	80 83       	st	Z, r24
+    ADMUX |= _BV(ADLAR) | _BV(REFS0); //ADC data register Left adjust (8 bits in ADCH and 2 bits in ADCL) | Avcc with external cap on Aref pin
+ 13c:	ec e7       	ldi	r30, 0x7C	; 124
+ 13e:	f0 e0       	ldi	r31, 0x00	; 0
+ 140:	80 81       	ld	r24, Z
+ 142:	80 66       	ori	r24, 0x60	; 96
+ 144:	80 83       	st	Z, r24
+    ADMUX |= 0b00000001;              //Select ADC channel 1
+ 146:	80 81       	ld	r24, Z
+ 148:	81 60       	ori	r24, 0x01	; 1
+ 14a:	80 83       	st	Z, r24
+
+    // sets the Global Enable for all interrupts ==========================
+    sei();
+ 14c:	78 94       	sei
+
+    // initialize the ADC, start one conversion at the beginning ==========
+    ADCSRA |= _BV(ADSC);
+ 14e:	ea e7       	ldi	r30, 0x7A	; 122
+ 150:	f0 e0       	ldi	r31, 0x00	; 0
+ 152:	80 81       	ld	r24, Z
+ 154:	80 64       	ori	r24, 0x40	; 64
+ 156:	80 83       	st	Z, r24
+}
+ 158:	08 95       	ret
+
+0000015a <main>:
+void inputSetup(void);
+void mTimer(int count);
+
+int main(){
+
+adcSetup();
+ 15a:	0e 94 95 00 	call	0x12a	; 0x12a <adcSetup>
+}
+
+void inputSetup(void)
+{
+    //Input for light
+    DDRD = 0x00;	//Input
+ 15e:	1a b8       	out	0x0a, r1	; 10
+	DDRC = 0xFF;	//LED output
+ 160:	8f ef       	ldi	r24, 0xFF	; 255
+ 162:	87 b9       	out	0x07, r24	; 7
+int main(){
+
+adcSetup();
+inputSetup();
+
+	STATE = 0;
+ 164:	10 92 03 01 	sts	0x0103, r1
+
+	cli();	// Disables all interrupts
+ 168:	f8 94       	cli
+
+	// Going to set up interrupt0 on PD0
+	DDRD = 0b11110110;
+ 16a:	86 ef       	ldi	r24, 0xF6	; 246
+ 16c:	8a b9       	out	0x0a, r24	; 10
+	DDRC = 0xFF;	// just use as a display
+ 16e:	8f ef       	ldi	r24, 0xFF	; 255
+ 170:	87 b9       	out	0x07, r24	; 7
+
+
+	// Set up the Interrupt 0,3 options
+	//External Inturrupt Control Register A - EICRA (pg 94 and under the EXT_INT tab to the right
+	// Set Interrupt sense control to catch a rising edge
+	EICRA |=  _BV(ISC01);
+ 172:	80 91 69 00 	lds	r24, 0x0069
+ 176:	82 60       	ori	r24, 0x02	; 2
+ 178:	80 93 69 00 	sts	0x0069, r24
+	EICRA &= ~_BV(ISC00);
+ 17c:	80 91 69 00 	lds	r24, 0x0069
+ 180:	8e 7f       	andi	r24, 0xFE	; 254
+ 182:	80 93 69 00 	sts	0x0069, r24
+//	EICRA &= ~_BV(ISC01) & ~_BV(ISC00); /* These lines would undo the above two lines */
+//	EICRA &= ~_BV(ISC31) & ~_BV(ISC30); /* Nice little trick */
+
+
+	// See page 96 - EIFR External Interrupt Flags...notice how they reset on their own in 'C'...not in assembly
+	EIMSK |= 0x09;
+ 186:	8d b3       	in	r24, 0x1d	; 29
+ 188:	89 60       	ori	r24, 0x09	; 9
+ 18a:	8d bb       	out	0x1d, r24	; 29
+
+	// Enable all interrupts
+	sei();	// Note this sets the Global Enable for all interrupts
+ 18c:	78 94       	sei
+
+	goto POLLING_STAGE;
+
+	// POLLING STATE
+	POLLING_STAGE: 
+		PORTC = 0x0F;	// Indicates this state is active
+ 18e:	2f e0       	ldi	r18, 0x0F	; 15
+ 190:	28 b9       	out	0x08, r18	; 8
+		switch(STATE){
+ 192:	80 91 03 01 	lds	r24, 0x0103
+ 196:	82 30       	cpi	r24, 0x02	; 2
+ 198:	51 f0       	breq	.+20     	; 0x1ae <main+0x54>
+ 19a:	83 30       	cpi	r24, 0x03	; 3
+ 19c:	18 f4       	brcc	.+6      	; 0x1a4 <main+0x4a>
+ 19e:	81 30       	cpi	r24, 0x01	; 1
+ 1a0:	b9 f7       	brne	.-18     	; 0x190 <main+0x36>
+ 1a2:	16 c0       	rjmp	.+44     	; 0x1d0 <main+0x76>
+ 1a4:	84 30       	cpi	r24, 0x04	; 4
+ 1a6:	a1 f0       	breq	.+40     	; 0x1d0 <main+0x76>
+ 1a8:	85 30       	cpi	r24, 0x05	; 5
+ 1aa:	91 f7       	brne	.-28     	; 0x190 <main+0x36>
+ 1ac:	15 c0       	rjmp	.+42     	; 0x1d8 <main+0x7e>
+		STATE = 0;
+		goto POLLING_STAGE;
+
+	REFLECTIVE_STAGE: 
+		
+		if (ADC_result_flag)
+ 1ae:	80 91 00 01 	lds	r24, 0x0100
+ 1b2:	90 91 01 01 	lds	r25, 0x0101
+ 1b6:	89 2b       	or	r24, r25
+ 1b8:	49 f0       	breq	.+18     	; 0x1cc <main+0x72>
+        {
+            //PORTC = ADC_result_H;
+            //int adcResult = (ADC_result_H << 2) | (ADC_result_L >> 6);
+            //adcResult = (adcResult*255)/1024;
+            //int adcResult = (ADC_result_H*255)/1024;
+            ADC_result_flag = 0x00;
+ 1ba:	10 92 01 01 	sts	0x0101, r1
+ 1be:	10 92 00 01 	sts	0x0100, r1
+            ADCSRA |= _BV(ADSC); //Start conversion
+ 1c2:	80 91 7a 00 	lds	r24, 0x007A
+ 1c6:	80 64       	ori	r24, 0x40	; 64
+ 1c8:	80 93 7a 00 	sts	0x007A, r24
+
+        }
+
+		// Do whatever is necessary HERE
+		PORTC = ADC_result_H; // Just output pretty lights know you made it here
+ 1cc:	80 91 02 01 	lds	r24, 0x0102
+		STATE = 0;
+		goto POLLING_STAGE;
+	
+	BUCKET_STAGE:
+		// Do whatever is necessary HERE
+		PORTC = 0x04;
+ 1d0:	88 b9       	out	0x08, r24	; 8
+		//Reset the state variable
+		STATE = 0;
+ 1d2:	10 92 03 01 	sts	0x0103, r1
+ 1d6:	dc cf       	rjmp	.-72     	; 0x190 <main+0x36>
+		goto POLLING_STAGE;
+		
+	END: 
+		// The closing STATE ... how would you get here?
+		PORTC = 0xF0;	// Indicates this state is active
+ 1d8:	80 ef       	ldi	r24, 0xF0	; 240
+ 1da:	88 b9       	out	0x08, r24	; 8
+		// Stop everything here...'MAKE SAFE'
+	return(0);
+
+}
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+ 1de:	90 e0       	ldi	r25, 0x00	; 0
+ 1e0:	08 95       	ret
+
+000001e2 <__vector_29>:
+    // initialize the ADC, start one conversion at the beginning ==========
+    ADCSRA |= _BV(ADSC);
+}
+
+ISR(ADC_vect)
+{
+ 1e2:	1f 92       	push	r1
+ 1e4:	0f 92       	push	r0
+ 1e6:	0f b6       	in	r0, 0x3f	; 63
+ 1e8:	0f 92       	push	r0
+ 1ea:	11 24       	eor	r1, r1
+ 1ec:	8f 93       	push	r24
+ 1ee:	9f 93       	push	r25
+    ADC_result_L = ADCL;
+ 1f0:	80 91 78 00 	lds	r24, 0x0078
+ 1f4:	80 93 04 01 	sts	0x0104, r24
+	ADC_result_H = ADCH;
+ 1f8:	80 91 79 00 	lds	r24, 0x0079
+ 1fc:	80 93 02 01 	sts	0x0102, r24
+    ADC_result_flag = 1;
+ 200:	81 e0       	ldi	r24, 0x01	; 1
+ 202:	90 e0       	ldi	r25, 0x00	; 0
+ 204:	90 93 01 01 	sts	0x0101, r25
+ 208:	80 93 00 01 	sts	0x0100, r24
+
+}
+ 20c:	9f 91       	pop	r25
+ 20e:	8f 91       	pop	r24
+ 210:	0f 90       	pop	r0
+ 212:	0f be       	out	0x3f, r0	; 63
+ 214:	0f 90       	pop	r0
+ 216:	1f 90       	pop	r1
+ 218:	18 95       	reti
+
+0000021a <inputSetup>:
+
+void inputSetup(void)
+{
+    //Input for light
+    DDRD = 0x00;	//Input
+ 21a:	1a b8       	out	0x0a, r1	; 10
+	DDRC = 0xFF;	//LED output
+ 21c:	8f ef       	ldi	r24, 0xFF	; 255
+ 21e:	87 b9       	out	0x07, r24	; 7
+}
+ 220:	08 95       	ret
+
+00000222 <mTimer>:
+
+void mTimer(int count)
+{
+ 222:	9c 01       	movw	r18, r24
+
+    int i = 0;
+
+    TCCR1B |= _BV(CS10); // Sets bit 0 of the timer counter control register to 1: enables timer with no prescaling
+ 224:	80 91 81 00 	lds	r24, 0x0081
+ 228:	81 60       	ori	r24, 0x01	; 1
+ 22a:	80 93 81 00 	sts	0x0081, r24
+    TCCR1B |= _BV(WGM12); //Enables clear timer on compare mode by writing a 1 to to the WGM12 bit (bit 3) of the TCCR1B register
+ 22e:	80 91 81 00 	lds	r24, 0x0081
+ 232:	88 60       	ori	r24, 0x08	; 8
+ 234:	80 93 81 00 	sts	0x0081, r24
+    OCR1A = 0x03E8; //Sets the output compare register to 0x03E8 == 1000 in decimal.
+ 238:	88 ee       	ldi	r24, 0xE8	; 232
+ 23a:	93 e0       	ldi	r25, 0x03	; 3
+ 23c:	90 93 89 00 	sts	0x0089, r25
+ 240:	80 93 88 00 	sts	0x0088, r24
+    TCNT1 = 0x0000; //Sets initial value of the timer to 0
+ 244:	10 92 85 00 	sts	0x0085, r1
+ 248:	10 92 84 00 	sts	0x0084, r1
+    //TIMSK1 |= _BV(OCIE1A); //Sets the OCIE1A bit to 1 in the timer interrupt mask register; enables the timer output compare interrupt
+    TIFR1 |= _BV(OCF1A); //OCF1A is automatically cleared when the output compare interrupt is triggered, writing a 1 to this bit
+ 24c:	b1 9a       	sbi	0x16, 1	; 22
+ 24e:	80 e0       	ldi	r24, 0x00	; 0
+ 250:	90 e0       	ldi	r25, 0x00	; 0
+ 252:	04 c0       	rjmp	.+8      	; 0x25c <mTimer+0x3a>
+                         // also does this
+    while (i < count)
+    {
+        if ((TIFR1 & 0x02) == 0x02)
+ 254:	b1 9b       	sbis	0x16, 1	; 22
+ 256:	fe cf       	rjmp	.-4      	; 0x254 <mTimer+0x32>
+        {
+            TIFR1 |= _BV(OCF1A);
+ 258:	b1 9a       	sbi	0x16, 1	; 22
+            i++;
+ 25a:	01 96       	adiw	r24, 0x01	; 1
+    OCR1A = 0x03E8; //Sets the output compare register to 0x03E8 == 1000 in decimal.
+    TCNT1 = 0x0000; //Sets initial value of the timer to 0
+    //TIMSK1 |= _BV(OCIE1A); //Sets the OCIE1A bit to 1 in the timer interrupt mask register; enables the timer output compare interrupt
+    TIFR1 |= _BV(OCF1A); //OCF1A is automatically cleared when the output compare interrupt is triggered, writing a 1 to this bit
+                         // also does this
+    while (i < count)
+ 25c:	82 17       	cp	r24, r18
+ 25e:	93 07       	cpc	r25, r19
+ 260:	cc f3       	brlt	.-14     	; 0x254 <mTimer+0x32>
+            i++;
+        }
+    }
+
+    return;
+}
+ 262:	08 95       	ret
+
+00000264 <_exit>:
+ 264:	f8 94       	cli
+
+00000266 <__stop_program>:
+ 266:	ff cf       	rjmp	.-2      	; 0x266 <__stop_program>
